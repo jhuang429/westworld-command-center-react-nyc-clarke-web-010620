@@ -1,12 +1,13 @@
 import React from 'react';
 import '../stylesheets/Area.css'
+import HostList from "./HostList"
 
-const Area = () => (
+const Area = (props) => (
 
-  <div className='area' id={/* Pass in the area name here to make sure this is styled correctly */}>
-    <h3 className='labels'>{/* Don't just pass in the name from the data...clean that thing up */}</h3>
+  <div className='area' id={props.area.name}>
+    <h3 className='labels'>{props.area.name.split("_").map(word=>(word.charAt(0).toUpperCase() + word.substr(1))).join(" ")}</h3>
 
-    {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
+    <HostList hosts={props.hosts.filter(host=>host.area === props.area.name)} SelectHost={props.SelectHost} selectedHost={props.selectedHost}/>
 
   </div>
 
